@@ -1,0 +1,10 @@
+{
+  "title": "Analysis pipeline for 183 infectious bronchitis virus genomes from the Republic of Korea",
+  "upload_type": "software",
+  "license": "MIT",
+  "keywords": ["infectious bronchitis virus", "genome assembly", "poultry", "Republic of Korea"],
+  "related_identifiers": [
+    {"identifier": "https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1537317",
+     "relation": "isSupplementTo", "scheme": "url"}
+  ]
+}

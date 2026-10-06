@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: If you use these scripts, please cite the data descriptor.
+title: Analysis pipeline for 183 infectious bronchitis virus genomes from the Republic of Korea
+abstract: >-
+  Read checking, de novo assembly, contig finishing, annotation with the replicase frameshift
+  located per genome, S1 lineage assignment and quality control for the 183 IBV genomes
+  deposited under BioProject PRJNA1537317, with the scripts that produce the tables and
+  figures of the data descriptor.
+type: software
+license: MIT
+authors:
+  - family-names: Lee
+    given-names: Sung-Gwon
+  - family-names: Kim
+    given-names: Seongmin
+  - family-names: Kim
+    given-names: Ji-Ye
+  - family-names: Jang
+    given-names: Il
+  - family-names: Kim
+    given-names: Hye-Ryoung
+  - family-names: Park
+    given-names: Chungoo
+keywords:
+  - infectious bronchitis virus
+  - gammacoronavirus
+  - genome assembly
+  - poultry
+  - Republic of Korea
