@@ -1,5 +1,7 @@
 # Analysis pipeline for 183 infectious bronchitis virus genomes from the Republic of Korea
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23179043.svg)](https://doi.org/10.5281/zenodo.23179043)
+
 The analysis behind the data descriptor *Whole-genome sequences of 183 infectious bronchitis
 virus isolates from national poultry surveillance in the Republic of Korea, 1986-2022*: from
 the deposited reads to the genomes, the per-genome quality record and the figures.
@@ -100,5 +102,6 @@ fasterq-dump --split-files SRR40942385
 
 ## Licence and citation
 
-MIT, see [LICENSE](LICENSE). If you use these scripts, please cite the data descriptor; see
-[CITATION.cff](CITATION.cff).
+MIT, see [LICENSE](LICENSE). If you use these scripts, please cite the data descriptor, and the
+code as <https://doi.org/10.5281/zenodo.23179043> (all versions) or
+<https://doi.org/10.5281/zenodo.23179044> (v1.0.0). See [CITATION.cff](CITATION.cff).
