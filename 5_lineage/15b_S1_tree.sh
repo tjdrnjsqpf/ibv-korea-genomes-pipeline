@@ -2,13 +2,18 @@
 # S1 tree, used only to assign a lineage to each genome.
 #
 # The framework is the 32 prototypes of the harmonised classification plus every prototype of the
-# four genotypes described since it (GVII-1, GVIII, GIX-1 and GX-1 - seven sequences, because one
-# reference per genotype understates identity by several points). Columns with a base in fewer than
-# 90% of sequences are dropped; -cons is not used, as it would keep columns present only in the
-# full-genome prototypes.
+# nine lineages described since it (GI-28, GI-29, GII-2, GVII-1, GVII-2, GVIII, GVIII-1, GIX-1 and
+# GX-1 - twelve sequences, because one reference per lineage understates identity by several points).
+# Each addition was taken from the paper that proposed the lineage, not from a review: a vaccine
+# strain or a dominant field strain of the same genotype is not the prototype. Where a prototype
+# record is a complete genome, the spike CDS is located and its first 1,700 nt taken; truncating the
+# record itself yields 1a. GI-30 and GI-31 are left out, as the two numbers are used for different
+# lineages by the proposing papers and by later reviews.
+# Columns with a base in fewer than 90% of sequences are dropped; -cons is not used, as it would keep
+# columns present only in the full-genome prototypes.
 set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/config.sh"
-W="$IBV_WORK/41_phylo_allproto"; cd "$W"
+W="$IBV_WORK/42_phylo_verified"; cd "$W"
 MM=$HOME/bin/micromamba
 T=${T:-8}                # match this to the cores actually free on the machine
 

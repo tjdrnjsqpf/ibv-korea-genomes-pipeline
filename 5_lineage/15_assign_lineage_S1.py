@@ -9,7 +9,7 @@ reaches the root without such a node is reported as unresolved rather than force
 """
 import csv, os, re, sys
 
-D = os.path.join(os.environ.get("IBV_WORK", os.getcwd()), "41_phylo_allproto")
+D = os.path.join(os.environ.get("IBV_WORK", os.getcwd()), "42_phylo_verified")
 MIN_ALRT, MIN_UFB = 80.0, 95.0
 
 # ---------- newick ----------
@@ -54,7 +54,7 @@ def tips(n, acc=None):
 # ---------- labels ----------
 proto = {r["taxon"]: r["lineage"] for r in
          csv.DictReader(open(D + "/00_data/valastro_labels.tsv"), delimiter="\t")}
-# four genotypes described after Valastro 2016 (GVII-1, GVIII, GIX-1, GX-1)
+# the nine lineages described after Valastro 2016, each verified against the paper that proposed it
 proto.update({r["taxon"]: r["lineage"] for r in
               csv.DictReader(open(D + "/00_data/new_proto_labels.tsv"), delimiter="\t")})
 sub = {r["taxon"]: r["lineage"] for r in
@@ -78,8 +78,12 @@ def climb(tip, labeller):
         labs = {labeller(t.name) for t in tips(n) if t.name and t.name not in ours}
         labs.discard(None)
         if len(labs) == 1:
-            ok = (n.alrt is None or n.alrt >= MIN_ALRT) and (n.ufb is None or n.ufb >= MIN_UFB)
-            sup = "%.0f/%.0f" % (n.alrt or 0, n.ufb or 0)
+            # A node carrying no support label is not evidence of support: IQ-TREE leaves the
+            # label off nodes it could not score, and treating None as a pass assigned four
+            # genomes on nodes reported as 0/0.
+            ok = (n.alrt is not None and n.alrt >= MIN_ALRT
+                  and n.ufb is not None and n.ufb >= MIN_UFB)
+            sup = "" if n.alrt is None else "%.0f/%.0f" % (n.alrt, n.ufb)
             if ok:
                 return labs.pop(), sup, len(tips(n))
         elif len(labs) > 1:
