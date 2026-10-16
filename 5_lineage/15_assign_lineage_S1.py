@@ -9,7 +9,7 @@ reaches the root without such a node is reported as unresolved rather than force
 """
 import csv, os, re, sys
 
-D = os.path.join(os.environ.get("IBV_WORK", os.getcwd()), "27_phylo_final")
+D = os.path.join(os.environ.get("IBV_WORK", os.getcwd()), "41_phylo_allproto")
 MIN_ALRT, MIN_UFB = 80.0, 95.0
 
 # ---------- newick ----------
@@ -54,6 +54,9 @@ def tips(n, acc=None):
 # ---------- labels ----------
 proto = {r["taxon"]: r["lineage"] for r in
          csv.DictReader(open(D + "/00_data/valastro_labels.tsv"), delimiter="\t")}
+# four genotypes described after Valastro 2016 (GVII-1, GVIII, GIX-1, GX-1)
+proto.update({r["taxon"]: r["lineage"] for r in
+              csv.DictReader(open(D + "/00_data/new_proto_labels.tsv"), delimiter="\t")})
 sub = {r["taxon"]: r["lineage"] for r in
        csv.DictReader(open(D + "/00_data/s1_lineage_labels.tsv"), delimiter="\t")}
 ours = {l[1:].strip() for l in open(D + "/00_data/ours_S1.fa") if l.startswith(">")}

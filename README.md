@@ -53,8 +53,9 @@ output, so any later stage can be re-run on its own.
 
 | Script | What it does |
 |---|---|
-| `15b_S1_tree.sh` | Aligns the first 1,700 nt of spike onto the harmonised-classification framework (32 lineage prototypes and 103 labelled Korean and other Asian sequences), trims with trimAl `-gt 0.9` and infers a maximum-likelihood tree with IQ-TREE. |
+| `15b_S1_tree.sh` | Aligns the first 1,700 nt of spike onto the reference framework (the 32 prototypes of the harmonised classification, every prototype of the four genotypes described since it, and 103 labelled Korean and other Asian sequences), trims with trimAl `-gt 0.9` and infers a maximum-likelihood tree with IQ-TREE. |
 | `15_assign_lineage_S1.py` | Reads lineage and sub-lineage off that tree: the nearest ancestral node whose reference descendants all carry one label, with SH-aLRT at least 80 % and ultrafast bootstrap at least 95 %; otherwise unresolved. |
+| `15c_lineage_identity.py` | Identity of each genome to the prototype of the lineage it was assigned. A tree cannot place a genome in a lineage its framework lacks, and support does not reveal the gap, so this is reported alongside the label. |
 
 ### 6_figure_data
 
