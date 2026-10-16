@@ -2,13 +2,15 @@
 # S1 tree, used only to assign a lineage to each genome.
 #
 # The framework is the 32 prototypes of the harmonised classification plus every prototype of the
-# nine lineages described since it (GI-28, GI-29, GII-2, GVII-1, GVII-2, GVIII, GVIII-1, GIX-1 and
+# nine lineages described since it (GI-28, GI-29, GII-2, GVII-1, GVII-2, GVIII-1, GVIII-2, GIX-1 and
 # GX-1 - twelve sequences, because one reference per lineage understates identity by several points).
 # Each addition was taken from the paper that proposed the lineage, not from a review: a vaccine
 # strain or a dominant field strain of the same genotype is not the prototype. Where a prototype
 # record is a complete genome, the spike CDS is located and its first 1,700 nt taken; truncating the
 # record itself yields 1a. GI-30 and GI-31 are left out, as the two numbers are used for different
-# lineages by the proposing papers and by later reviews.
+# lineages by the proposing papers and by later reviews. IB80 is GVIII-2: Petzoldt 2022 proposed the
+# genotype GVIII without a lineage number, and Legnardi 2024 split GVIII into GVIII-1 and GVIII-2 with
+# IB80 as the representative of the latter.
 # Columns with a base in fewer than 90% of sequences are dropped; -cons is not used, as it would keep
 # columns present only in the full-genome prototypes.
 set -euo pipefail

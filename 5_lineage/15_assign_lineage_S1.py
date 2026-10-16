@@ -55,6 +55,7 @@ def tips(n, acc=None):
 proto = {r["taxon"]: r["lineage"] for r in
          csv.DictReader(open(D + "/00_data/valastro_labels.tsv"), delimiter="\t")}
 # the nine lineages described after Valastro 2016, each verified against the paper that proposed it
+# (GI-28, GI-29, GII-2, GVII-1, GVII-2, GVIII-1, GVIII-2, GIX-1, GX-1)
 proto.update({r["taxon"]: r["lineage"] for r in
               csv.DictReader(open(D + "/00_data/new_proto_labels.tsv"), delimiter="\t")})
 sub = {r["taxon"]: r["lineage"] for r in
