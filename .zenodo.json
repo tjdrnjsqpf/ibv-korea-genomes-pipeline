@@ -4,12 +4,12 @@
   "license": "MIT",
   "description": "Read checking, de novo assembly and contig finishing, annotation with the replicase ribosomal frameshift located on each genome, quality control, S1 lineage assignment, and the derivation of the figure source data for the 183 infectious bronchitis virus genomes deposited under NCBI BioProject PRJNA1537317.",
   "creators": [
-    {"name": "Lee, Sung-Gwon", "affiliation": "Biomedical Research Institute, Chonnam National University Hospital"},
-    {"name": "Kim, Seongmin", "affiliation": "School of Biological Sciences and Technology, Chonnam National University"},
-    {"name": "Kim, Ji-Ye", "affiliation": "Avian Disease Division, Animal and Plant Quarantine Agency"},
-    {"name": "Jang, Il", "affiliation": "Avian Disease Division, Animal and Plant Quarantine Agency"},
-    {"name": "Kim, Hye-Ryoung", "affiliation": "Avian Disease Division, Animal and Plant Quarantine Agency"},
-    {"name": "Park, Chungoo", "affiliation": "School of Biological Sciences and Technology, Chonnam National University"}
+    {"name": "Lee, Sung-Gwon", "orcid": "0000-0002-0928-9950", "affiliation": "Biomedical Research Institute, Chonnam National University Hospital"},
+    {"name": "Kim, Seongmin", "orcid": "0009-0006-6047-6416", "affiliation": "School of Biological Sciences and Technology, Chonnam National University"},
+    {"name": "Kim, Ji-Ye", "orcid": "0000-0001-8441-8903", "affiliation": "Avian Disease Division, Animal and Plant Quarantine Agency"},
+    {"name": "Jang, Il", "orcid": "0000-0002-0401-2952", "affiliation": "Avian Disease Division, Animal and Plant Quarantine Agency"},
+    {"name": "Kim, Hye-Ryoung", "orcid": "0000-0002-8926-2298", "affiliation": "Avian Disease Division, Animal and Plant Quarantine Agency"},
+    {"name": "Park, Chungoo", "orcid": "0000-0002-9545-6654", "affiliation": "School of Biological Sciences and Technology, Chonnam National University"}
   ],
   "keywords": ["infectious bronchitis virus", "gammacoronavirus", "genome assembly", "poultry", "Republic of Korea"],
   "related_identifiers": [
