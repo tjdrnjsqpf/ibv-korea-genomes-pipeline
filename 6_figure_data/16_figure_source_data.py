@@ -14,6 +14,11 @@ CNAME = {"Dangjinsi": "Dangjin-si", "Pocheonsi": "Pocheon-si", "Hwaseongsi": "Hw
          "Cheonansidongnamgu": "Cheonan-si", "Cheonansiseobukgu": "Cheonan-si", "Seongnamsijungwongu": "Seongnam-si",
          "Seongnamsisujeonggu": "Seongnam-si", "Seongnamsibundanggu": "Seongnam-si", "Yonginsigiheunggu": "Yongin-si",
          "Yonginsisujigu": "Yongin-si", "Yonginsicheoingu": "Yongin-si"}
+# one name_eng in that file is not a spelling variant but the wrong county: 32360 is Cheorwon-gun
+# in Gangwon-do and carries the name of Gongju-si (34020) in Chungcheongnam-do. Corrected by the
+# administrative code, which is unique, rather than by the name, which is not: the file gives 251
+# counties 225 English names.
+CFIX = {"32360": "Cheorwon-gun"}
 
 def write(name, header, rows):
     with open(f"{OUT}/{name}", "w", newline="") as f:
@@ -51,7 +56,7 @@ for r in t1:
         for f in prov["features"]:
             if any(inside(float(lo), float(la), ring) for ring in rings(f["geometry"])): hit, how = f["properties"]["NAME_1"], "county coordinate"; break
         for f in muni["features"]:
-            if any(inside(float(lo), float(la), ring) for ring in rings(f["geometry"])): county = CNAME.get(f["properties"]["name_eng"], f["properties"]["name_eng"]); break
+            if any(inside(float(lo), float(la), ring) for ring in rings(f["geometry"])): county = CFIX.get(f["properties"]["code"]) or CNAME.get(f["properties"]["name_eng"], f["properties"]["name_eng"]); break
     elif ": " in m["geo_loc_name"] and m["geo_loc_name"].split(": ")[1] in NAMES:
         hit, how = m["geo_loc_name"].split(": ")[1], "province recorded directly"
     if not hit: how = "vaccine strain" if m["isolation_source"] == "commercial vaccine" else "no recorded site"

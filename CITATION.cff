@@ -8,7 +8,7 @@ abstract: >-
   figures of the data descriptor.
 type: software
 license: MIT
-version: 1.2.0
+version: 1.2.1
 doi: 10.5281/zenodo.23179043
 repository-code: https://github.com/tjdrnjsqpf/ibv-korea-genomes-pipeline
 identifiers:
