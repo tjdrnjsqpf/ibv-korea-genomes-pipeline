@@ -71,11 +71,23 @@ byname = {t.name: t for t in all_tips if t.name}
 print("tips in tree: %d, ours: %d" % (len(all_tips), sum(1 for t in all_tips if t.name in ours)),
       file=sys.stderr)
 
-def climb(tip, labeller):
-    """nearest supported ancestor whose reference descendants agree on a label"""
+def climb(tip, labeller, within_lineage=False):
+    """nearest supported ancestor whose reference descendants agree on a label.
+
+    With within_lineage, the node must also sit inside a single lineage: its prototype
+    descendants must carry one label. Without that guard the sub-lineage pass climbs past the
+    genotype boundary whenever the nearer context sequences are unlabelled, and returns the
+    label of whatever happens to lie further up. That put seven GX-1 and GVI-1 genomes in
+    B4-like, a GI-15 sub-lineage, contradicting their own lineage call in the same row.
+    """
     n = tip
     while n.parent is not None:
         n = n.parent
+        if within_lineage:
+            pl = {proto.get(t.name) for t in tips(n) if t.name and t.name not in ours}
+            pl.discard(None)
+            if len(pl) > 1:
+                return None, "", 0
         labs = {labeller(t.name) for t in tips(n) if t.name and t.name not in ours}
         labs.discard(None)
         if len(labs) == 1:
@@ -97,7 +109,7 @@ for s in sorted(ours):
     if t is None:
         rows.append((s, "no S1", "", "", "", "")); continue
     lin, lsup, _ = climb(t, lambda k: proto.get(k))
-    sl,  ssup, _ = climb(t, sub_of)
+    sl,  ssup, _ = climb(t, sub_of, within_lineage=True)
     rows.append((s, lin or "unresolved", lsup, sl or "unresolved", ssup, ""))
 
 with open(D + "/lineage_from_tree.tsv", "w") as f:

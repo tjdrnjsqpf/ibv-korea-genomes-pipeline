@@ -54,7 +54,7 @@ output, so any later stage can be re-run on its own.
 | Script | What it does |
 |---|---|
 | `15b_S1_tree.sh` | Aligns the first 1,700 nt of spike onto the reference framework (the 32 prototypes of the harmonised classification, every prototype of the nine lineages described since it, and 103 labelled Korean and other Asian sequences), trims with trimAl `-gt 0.9` and infers a maximum-likelihood tree with IQ-TREE. |
-| `15_assign_lineage_S1.py` | Reads lineage and sub-lineage off that tree: the nearest ancestral node whose reference descendants all carry one label, with SH-aLRT at least 80 % and ultrafast bootstrap at least 95 %; otherwise unresolved. |
+| `15_assign_lineage_S1.py` | Reads lineage and sub-lineage off that tree: the nearest ancestral node whose reference descendants all carry one label, with SH-aLRT at least 80 % and ultrafast bootstrap at least 95 %; otherwise unresolved. The sub-lineage search is bounded to the genome's own lineage - a node spanning more than one prototype label cannot carry a sub-lineage - so a genome is left unresolved rather than given the sub-lineage of a different genotype. |
 | `15c_lineage_identity.py` | Identity of each genome to the prototype of the lineage it was assigned. A tree cannot place a genome in a lineage its framework lacks, and support does not reveal the gap, so this is reported alongside the label. |
 
 ### 6_figure_data
@@ -104,5 +104,5 @@ fasterq-dump --split-files SRR40942385
 ## Licence and citation
 
 MIT, see [LICENSE](LICENSE). If you use these scripts, please cite the data descriptor, and the
-code as <https://doi.org/10.5281/zenodo.23179043> (all versions) or
-<https://doi.org/10.5281/zenodo.23179044> (v1.0.0). See [CITATION.cff](CITATION.cff).
+code as <https://doi.org/10.5281/zenodo.23179043>, which is the concept DOI and resolves to the
+latest version. See [CITATION.cff](CITATION.cff).
